@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge, chorme=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>validator coffee test</title>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script src="validator.js"></script>
+
+</head>
+
+<body>
+	<div id="result"><h1>结果：</h1></div>
+	<button id="run">run</button><br><br>
+	<form id="formId">
+		<input type="text" required max="5" min="2"><br><br>
+		<input type="text" max="3"><br><br>
+		<input type="text" min="2"><br><br>
+		<input type="hidden" name="hiddenInput" hidden><br><br>
+		<input type="radio" value="0" name="dead" required>否
+		<input type="radio" value="1" name="dead" >是<br><br>
+		<input type="checkbox" value="0" name="alive" required>
+		<input type="checkbox" value="1" name="alive">
+		<input type="checkbox" value="2" name="alive">
+	</form>
+<script>
+    $('#run').click(function(){
+    	// Validator.cfg.ignore = false;
+    	var pass = $('form').validate(); // Validator.validate('formId')
+    	$('#result').find('h1').text('结果：').append('['+pass.toString()+']');
+    });
+</script>
+</body>
+</html>
