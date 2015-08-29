@@ -124,25 +124,25 @@ $.extend Validator.messageHandlers, {
 $.extend Validator.messages, {
 	defaults: (elem) ->
 		msg = elem.attr 'data-msg'
-		msg ?= '总感觉哪里不对-_-'
+		msg ?= 'Wrong'
 
 	required: (elem) ->
 		msg = elem.attr 'data-msg'
-		msg ?= '必填'
+		msg ?= 'Mandatory'
 
 	min: (elem) ->
 		min = elem.attr 'min'
 		msg = elem.attr 'data-msg'
-		msg ?= "不能小于#{min}个字符"
+		msg ?= "It may not be less then #{min} characters"
 
 	max: (elem) ->
 		max = elem.attr 'max'
 		msg = elem.attr 'data-msg'
-		msg ?= "不能大于#{max}个字符"
+		msg ?= "It may not be more then #{min} characters"
 
 	regexp: (elem) ->
 		msg = elem.attr 'data-msg'
-		msg ?= '格式错误'
+		msg ?= 'Wrong format'
 
 }
 
@@ -150,6 +150,7 @@ $.extend Validator.messages, {
 @Validator or= Validator
 
 # exports as jQuery plupin
-$.fn.validate = ->
-	id = @attr 'id'
-	Validator.validate id
+$.extend $.fn, 
+	validate: (id)->
+		id = @attr 'id'
+		Validator.validate id
